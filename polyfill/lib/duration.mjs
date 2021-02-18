@@ -562,7 +562,7 @@ export class Duration {
   }
   toJSON() {
     if (!ES.IsTemporalDuration(this)) throw new TypeError('invalid receiver');
-    return ES.TemporalDurationToString(this);
+    return ES.TemporalDurationToString(this, 'auto');
   }
   toLocaleString(locales = undefined, options = undefined) {
     if (!ES.IsTemporalDuration(this)) throw new TypeError('invalid receiver');
@@ -570,7 +570,7 @@ export class Duration {
       return new Intl.DurationFormat(locales, options).format(this);
     }
     console.warn('Temporal.Duration.prototype.toLocaleString() requires Intl.DurationFormat.');
-    return ES.TemporalDurationToString(this);
+    return ES.TemporalDurationToString(this, 'auto');
   }
   valueOf() {
     throw new TypeError('use compare() to compare Temporal.Duration');
